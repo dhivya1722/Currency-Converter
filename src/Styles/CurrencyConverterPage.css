@@ -1,83 +1,83 @@
 /* Styles for CurrencyConverterPage.css */
 
 .app {
-    width: 75%;
-    height: 85%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    margin: auto;
-    background-color: #fff;
-
-   
-  }
-  
-  .app h1 {
-    text-align: center;
-    font-size: 2rem;
-    font-style: italic;
-    color: darkslateblue;
-  }
-  
-  .container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .item1, .item2, .item3, .item4 {
-    display: flex;
-    justify-content: space-between;
-    margin: 1em;
-  }
+  width: 45%;
+  height: 85%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  background-color: #fff;
 
  
-  
-  h2 {
-    font-size: 1.5rem;
-  }
-  
-  h3 {
-    font-size: 3rem;
-  }
-  
-  .input, .output {
-    width: 40%;
-    height: 40px;
-    font-size: 1em;
-    margin: 0.2em 0;
-    border-radius: 10px;
-    padding: 0 1em;
-  }
-  
-  .input {
-    border: 2px solid black;
-    outline: none;
-  }
-  
-  .input:hover {
-    border: 2px solid darkslateblue;
-  }
-  
-  .output {
-    border: none;
-    background-color: lightgray;
-    color: darkred;
-    font-weight: bold;
-  }
-  
-  .opt-1, .opt-2 {
-    width: 40%;
-  }
- 
-.app {
-  border: 2px solid darkslategray;
-  padding: 20px;
+}
+
+.app h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-style: italic;
+  color: black;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item1, .item2, .item3, .item4 {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1rem;
+
+}
+
+.input, .output {
+  width: 40%;
+  height: 40px;
+  font-size: 1em;
+  margin: 0.2em 0;
   border-radius: 10px;
+  padding: 0 1em;
+}
+
+.input {
+  border: 2px solid black;
+  outline: none;
+}
+
+.input:hover {
+  border: 2px solid darkslateblue;
+}
+
+.output {
+  border: none;
+  background-color: lightgray;
+  color: darkred;
+  font-weight: bold;
+}
+
+.opt-1, .opt-2 {
+  width: 40%;
+}
+
+.app {
+border: 2px solid darkslategray;
+padding: 20px;
+border-radius: 10px;
 }
 
 
@@ -85,17 +85,17 @@
 
 /* ... media query ... */
 
-  @media only screen and (max-width: 768px) {
-    .app {
-      width: 100%;
-    }
-  
-    h2 {
-      font-size: 1rem;
-    }
+@media only screen and (max-width: 768px) {
+  .app {
+    width: 100%;
   }
 
-  
+  h2 {
+    font-size: 1rem;
+  }
+}
+
+
 
 
 
