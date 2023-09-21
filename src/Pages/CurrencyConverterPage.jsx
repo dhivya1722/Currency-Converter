@@ -12,6 +12,7 @@ function CurrencyConverter() {
     const [fromCurrency, setFromCurrency] = useState('')
     const [toCurrency, setToCurrency] = useState('')
     const [currencyNames, setCurrencyNames] = useState({})
+    
 
 
     useEffect(() => {
@@ -44,7 +45,10 @@ function CurrencyConverter() {
 
     return (
         <div className="app">
+            <nav className="navbar">
             <h1>Currency Converter</h1>
+            </nav>
+            {/* <h1>Currency Converter</h1> */}
             <div className="container">
                 <div className="item1">
                     <div className="opt-1">

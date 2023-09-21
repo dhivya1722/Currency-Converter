@@ -4,8 +4,8 @@ select{
     font-size: 1em;
     cursor: pointer;
     outline: none;
-    background-color: darkslateblue;
-    color: #fff;
+    background-color: rgb(182, 182, 184);
+    color: black;
     margin :  0.2em 0;
     padding: 0 1em;
     border-radius: 10px;

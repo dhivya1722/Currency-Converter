@@ -10,5 +10,11 @@ const fetchExchangeRate = (fromCurrency, toCurrency, amount) => {
     .then((res) => res.json())
     .then((data) => Object.values(data.rates)[0]);
 };
+const fetchHistoricalExchangeRates = (fromCurrency, toCurrency, startDate, endDate) => {
+  return fetch(`${BASE_URL}/${startDate}..${endDate}?from=${fromCurrency}&to=${toCurrency}`)
+    .then((res) => res.json())
+    .then((data) => data.rates);
+};
 
-export { fetchCurrencies, fetchExchangeRate };
+export { fetchCurrencies, fetchExchangeRate, fetchHistoricalExchangeRates };
+
