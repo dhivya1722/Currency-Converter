@@ -4,16 +4,21 @@ import '../Styles/WelcomePage.css'
 
 const WelcomePage = () => {
   return (
-    <div className='=container'>
-   
+    <>
+    <nav className="navbar_welcome">
+    <div className="flex-container">
+        <h1 className='header'>Currency Converter</h1>
+        <h3 className='Signin'>Signin</h3>
+    </div>
+      </nav>
     <div className="welcome-page">
      <p>WELCOME TO CURRENCY CONVERTER</p>
       <Link to="/converter" className="start-button">
-        Start Converting....
+        Start Free Currency Converter....
       </Link>
     </div>
    
-     </div>
+     </>
   );
 };
 

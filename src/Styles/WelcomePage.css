@@ -6,7 +6,7 @@
 .welcome-page {
     text-align: center;
     margin: 50px auto;
-    margin-top: 250px;
+    margin-top: 200px;
     padding: 20px;
     max-width: 600px;
     box-shadow: 0 0 10px rgba(17, 17, 17, 0.1);
@@ -18,7 +18,22 @@
     
     
   }
+
+ 
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   
+  .navbar_welcome {
+  
+    width: 100%;
+    text-align: center;
+    background-color: #1b2158;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
   
 
   .welcome-page p {
@@ -37,3 +52,7 @@
     border-radius: 5px;
   }
   
+.Signin{
+  color:white
+}
+
