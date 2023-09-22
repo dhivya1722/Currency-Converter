@@ -12,6 +12,8 @@ function CurrencyConverter() {
   const [fromCurrency, setFromCurrency] = useState('')
   const [toCurrency, setToCurrency] = useState('')
   const [currencyNames, setCurrencyNames] = useState({})
+  const [selectedDate, setSelectedDate] = useState('');  // Store the selected date
+
 
   const updateFromCurrency = (value) => {
     setFromCurrency(value);
@@ -20,6 +22,10 @@ function CurrencyConverter() {
   const updateToCurrency = (value) => {
     setToCurrency(value);
 
+  };
+
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
   };
 
 
@@ -65,6 +71,46 @@ function CurrencyConverter() {
   }, [fromCurrency, toCurrency, fromAmount]);
 
 
+  const getHistoricalExchangeRate = () => {
+    if (selectedDate && fromCurrency && toCurrency) {
+      const historicalEndpoint = `http://data.fixer.io/api/${selectedDate}?access_key=80b1600a98127f7a295e319ee678e4a4`;
+
+
+      console.log('Fetching historical exchange rate...');
+      console.log('Selected Date:', selectedDate);
+      console.log('From Currency:', fromCurrency);
+      console.log('To Currency:', toCurrency);
+      fetch(historicalEndpoint)
+
+
+
+
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            const fromCurrencyRate = data.rates[fromCurrency];
+            const toCurrencyRate = data.rates[toCurrency];
+
+            if (fromCurrencyRate && toCurrencyRate) {
+              const convertedAmount = (parseFloat(fromAmount) / fromCurrencyRate) * toCurrencyRate;
+              setToAmount(convertedAmount.toFixed(3));
+            } else {
+              setToAmount('Unavailable');
+            }
+          } else {
+            console.error('Error fetching historical exchange rates:', data.error);
+          }
+        })
+        .catch((error) => console.error('Error fetching historical exchange rates:', error));
+    }
+  };
+
+  useEffect(() => {
+    getHistoricalExchangeRate();
+  }, [fromCurrency, toCurrency, selectedDate]);
+
+
+
   return (
     <div className="app">
       <nav className="navbar">
@@ -75,20 +121,10 @@ function CurrencyConverter() {
         <div className="item1">
           <div className="opt-1">
             <h2>From Currency  </h2>
-            <CurrencyOptions
-              prop="From currency"
-              fromCurrency={fromCurrency}
-              currencyOptions={currencyOptions}
-              updateCurrency={updateFromCurrency}
-            />                    </div>
+            <CurrencyOptions prop="From currency" fromCurrency={fromCurrency} currencyOptions={currencyOptions} updateCurrency={updateFromCurrency}/>                    </div>
           <div className="opt-2">
             <h2>To Currency  </h2>
-            <CurrencyOptions
-              prop="To currency"
-              fromCurrency={toCurrency}
-              currencyOptions={currencyOptions}
-              updateCurrency={updateToCurrency}
-            />                      </div>
+            <CurrencyOptions prop="To currency" fromCurrency={toCurrency} currencyOptions={currencyOptions} updateCurrency={updateToCurrency}/>                      </div>
         </div>
         <div className="item2">
           <h2>Enter Amount in  {fromCurrency} </h2>
@@ -98,6 +134,10 @@ function CurrencyConverter() {
           <h3>=</h3>
           <h2>Amount in   {toCurrency}</h2>
           <input className="output" disabled value={toAmount || ''} type="text" />
+        </div>
+        <div className="date">
+          <label htmlFor="dateInput">Select Date for Historical Exchange Rates: </label>
+          <input type="date" id="dateInput" value={selectedDate} onChange={handleDateChange} />
         </div>
         <div className="item4">
           <h2>{fromAmount} {currencyNames[`${fromCurrency}`]} = {toAmount} {currencyNames[`${toCurrency}`]}</h2>

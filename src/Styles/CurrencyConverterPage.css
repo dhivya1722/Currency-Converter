@@ -1,4 +1,4 @@
-/* Styles for Currency Converter */
+
 .app {
   display: flex;
   flex-direction: column;
@@ -15,8 +15,8 @@
   margin-bottom: 20px;
 }
 
-h1{
-  color:white
+h1 {
+  color: white
 }
 
 .container {
@@ -24,7 +24,7 @@ h1{
   flex-direction: column;
   align-items: center;
 
-  
+
 
 }
 
@@ -34,7 +34,8 @@ h1{
   margin-bottom: 20px;
 }
 
-.opt-1, .opt-2 {
+.opt-1,
+.opt-2 {
   margin: 0 20px;
 }
 
@@ -49,7 +50,8 @@ h1{
   margin-bottom: 20px;
 }
 
-.input, .output {
+.input,
+.output {
   padding: 10px;
   margin: 0 10px;
 }
@@ -58,15 +60,13 @@ h1{
   text-align: center;
 }
 
-/* Shadow box effect */
+
 .container {
   box-shadow: 0 0 10px rgba(17, 17, 17, 0.1);
   border-radius: 10px;
   border: 2px solid darkslategray;
 }
 
-/* Adjusted Styles for Currency Converter */
-/* ... Other styles ... */
 
 .item3 {
   display: flex;
@@ -75,7 +75,8 @@ h1{
   margin-bottom: 20px;
 }
 
-.input, .output {
+.input,
+.output {
   padding: 10px;
   margin: 10px 0;
 }
@@ -99,7 +100,20 @@ h1{
   font-weight: bold;
 }
 
-/* ... Other styles ... */
+.date {
+  margin-top: 20px;
+  padding: 10px;
+}
 
+.date label {
+  margin-right: 10px;
+  font-weight: bold;
+}
 
-/* Adjust spacing and fonts as needed */
+.date input {
+  padding: 5px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+}
