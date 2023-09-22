@@ -2,6 +2,7 @@
 const CURRENCY_LIST_ENDPOINT = `http://data.fixer.io/api/symbols?access_key=80b1600a98127f7a295e319ee678e4a4`;
 const EXCHANGE_RATE_ENDPOINT = `http://data.fixer.io/api/latest?access_key=80b1600a98127f7a295e319ee678e4a4`;
 // const PAST_YEAR_ENDPOINT=`http://data.fixer.io/api//YYYY-MM-DD?access_key=80b1600a98127f7a295e319ee678e4a4`;
+// const historicalEndpoint = `http://data.fixer.io/api/${selectedDate}?access_key=80b1600a98127f7a295e319ee678e4a4`;
 
 
 
@@ -32,11 +33,6 @@ const fetchExchangeRate = (fromCurrency, toCurrency) => {
       return null;
     });
 };
-
-
-
-
-
 
 
 

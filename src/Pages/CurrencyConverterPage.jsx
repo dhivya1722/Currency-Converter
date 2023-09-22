@@ -45,6 +45,7 @@ function CurrencyConverter() {
       .catch((error) => console.error('Error fetching currencies:', error));
   }, []);
 
+  
   useEffect(() => {
     if (parseFloat(fromAmount) === 0) {
       setToAmount(0);
@@ -69,7 +70,6 @@ function CurrencyConverter() {
         });
     }
   }, [fromCurrency, toCurrency, fromAmount]);
-
 
   const getHistoricalExchangeRate = () => {
     if (selectedDate && fromCurrency && toCurrency) {
@@ -108,6 +108,7 @@ function CurrencyConverter() {
   useEffect(() => {
     getHistoricalExchangeRate();
   }, [fromCurrency, toCurrency, selectedDate]);
+  
 
 
 
@@ -121,10 +122,10 @@ function CurrencyConverter() {
         <div className="item1">
           <div className="opt-1">
             <h2>From Currency  </h2>
-            <CurrencyOptions prop="From currency" fromCurrency={fromCurrency} currencyOptions={currencyOptions} updateCurrency={updateFromCurrency}/>                    </div>
+            <CurrencyOptions prop="From currency" fromCurrency={fromCurrency} currencyOptions={currencyOptions} updateCurrency={updateFromCurrency} />                    </div>
           <div className="opt-2">
             <h2>To Currency  </h2>
-            <CurrencyOptions prop="To currency" fromCurrency={toCurrency} currencyOptions={currencyOptions} updateCurrency={updateToCurrency}/>                      </div>
+            <CurrencyOptions prop="To currency" fromCurrency={toCurrency} currencyOptions={currencyOptions} updateCurrency={updateToCurrency} />                      </div>
         </div>
         <div className="item2">
           <h2>Enter Amount in  {fromCurrency} </h2>
