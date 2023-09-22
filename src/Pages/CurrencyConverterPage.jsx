@@ -15,17 +15,7 @@ function CurrencyConverter() {
     
 
 
-    // useEffect(() => {
-    //     fetchCurrencies()
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             setCurrencyOptions(Object.keys(data));
-    //             setFromCurrency(Object.keys(data)[0]);
-    //             setToCurrency(Object.keys(data)[0]);
-    //             setCurrencyNames(data);
-    //         })
-    //         .catch((error) => console.error('Error fetching currencies:', error));
-    // }, []);
+  
 
     useEffect(() => {
     // Fetch currency options from the API
@@ -85,16 +75,16 @@ function CurrencyConverter() {
                     </div>
                 </div>
                 <div className="item2">
-                    <h2>Enter Amount in {currencyNames[`${fromCurrency}`]}  </h2>
-                    <h2>Output in {currencyNames[`${toCurrency}`]}  </h2>
+                    <h2>Enter Amount in  {fromCurrency} </h2>
+                    <input type="number" autoComplete="off"   value={fromAmount || ''} className="input" onChange={e => setFromAmount(e.target.value)} />
                 </div>
                 <div className="item3">
-                    <input type="number" autoComplete="off"   value={fromAmount || ''} className="input" onChange={e => setFromAmount(e.target.value)} />
                     <h3>=</h3>
+                    <h2>Amount in   {toCurrency}</h2>
                     <input className="output" disabled value={toAmount || ''} type="text" />
                 </div>
                 <div className="item4">
-                    <h2>{fromAmount} {fromCurrency} = {toAmount} {toCurrency}</h2>
+                    <h2>{fromAmount} {currencyNames[`${fromCurrency}`]} = {toAmount} {currencyNames[`${toCurrency}`]}</h2>
                 </div>
             </div>
         </div>

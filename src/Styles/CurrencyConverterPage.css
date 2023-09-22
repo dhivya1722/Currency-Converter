@@ -1,72 +1,87 @@
-/* Styles for CurrencyConverterPage.css */
-
+/* Styles for Currency Converter */
 .app {
-  width: 55%;
-  height: 85%;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  margin: auto;
-  /* margin-left: 50px;
-  margin-top: 50px;
-  background-color: #fff; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 
- 
 }
 
- h1 {
+.navbar {
+  width: 100%;
   text-align: center;
-  font-size: 2rem;
-  /* font-style: italic; */
-  color: black;
-  margin-top: auto;
-  color:white
-
+  background-color: #1b2158;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
-.navbar{
-  background-color: rgb(4, 4, 87);
+h1{
+  color:white
 }
 
 .container {
-  border: 2px solid darkslategray;
-  height: 80%;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+
+  
+
 }
 
-.item1, .item2, .item3, .item4 {
+.item1 {
   display: flex;
-  justify-content: space-between;
-  margin: 1em;
-  margin-bottom: 40px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-h2 {
-  font-size: 1.5rem;
+.opt-1, .opt-2 {
+  margin: 0 20px;
 }
 
-h3 {
-  font-size: 1rem;
-
+.item2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.item4{
-  margin-left: 320px;
+.item3 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .input, .output {
-  width: 40%;
-  height: 40px;
-  font-size: 1em;
-  margin: 0.2em 0;
-  border-radius: 10px;
-  padding: 0 1em;
+  padding: 10px;
+  margin: 0 10px;
 }
+
+.item4 {
+  text-align: center;
+}
+
+/* Shadow box effect */
+.container {
+  box-shadow: 0 0 10px rgba(17, 17, 17, 0.1);
+  border-radius: 10px;
+  border: 2px solid darkslategray;
+}
+
+/* Adjusted Styles for Currency Converter */
+/* ... Other styles ... */
+
+.item3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input, .output {
+  padding: 10px;
+  margin: 10px 0;
+}
+
+
+
 
 .input {
   border: 2px solid black;
@@ -84,39 +99,7 @@ h3 {
   font-weight: bold;
 }
 
-.opt-1, .opt-2 {
-  width: 40%;
-}
-
-.app {
-/* border: 2px solid darkslategray; */
-padding: 20px;
-border-radius: 10px;
-}
+/* ... Other styles ... */
 
 
-
-
-/* ... media query ... */
-
-@media only screen and (max-width: 768px) {
-  .app {
-    width: 100%;
-  }
-
-  h2 {
-    font-size: 1rem;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
+/* Adjust spacing and fonts as needed */
