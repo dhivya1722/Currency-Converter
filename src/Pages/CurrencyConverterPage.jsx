@@ -15,34 +15,58 @@ function CurrencyConverter() {
     
 
 
-    useEffect(() => {
-        fetchCurrencies()
-            .then((res) => res.json())
-            .then((data) => {
-                setCurrencyOptions(Object.keys(data));
-                setFromCurrency(Object.keys(data)[0]);
-                setToCurrency(Object.keys(data)[0]);
-                setCurrencyNames(data);
-            })
-            .catch((error) => console.error('Error fetching currencies:', error));
-    }, []);
-
-
+    // useEffect(() => {
+    //     fetchCurrencies()
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             setCurrencyOptions(Object.keys(data));
+    //             setFromCurrency(Object.keys(data)[0]);
+    //             setToCurrency(Object.keys(data)[0]);
+    //             setCurrencyNames(data);
+    //         })
+    //         .catch((error) => console.error('Error fetching currencies:', error));
+    // }, []);
 
     useEffect(() => {
-        if (parseInt(fromAmount) === 0) {
-            setToAmount(0)
-        } else if (fromAmount === '') {
-            setToAmount('')
-        } else if (fromCurrency === toCurrency) {
-            setToAmount(fromAmount)
-        } else {
-            fetchExchangeRate(fromCurrency, toCurrency, fromAmount).then((rate) => setToAmount(rate));
-        }
-    }, [fromCurrency, toCurrency, fromAmount, toAmount])
+    // Fetch currency options from the API
+    fetchCurrencies()
+      .then((res) => res.json())
+      .then((data) => {
+        setCurrencyOptions(Object.keys(data.symbols));
+        setFromCurrency(Object.keys(data.symbols)[0]);
+        setToCurrency(Object.keys(data.symbols)[0]);
+        setCurrencyNames(data.symbols);
+    
+      })
+      .catch((error) => console.error('Error fetching currencies:', error));
+  }, []);
 
 
-
+  useEffect(() => {
+    if (parseInt(fromAmount) === 0) {
+      setToAmount(0);
+    } else if (fromAmount === '') {
+      setToAmount('');
+    } else if (fromCurrency === toCurrency || !toCurrency) {
+      setToAmount(fromAmount);
+    } else {
+      fetchExchangeRate(fromCurrency, toCurrency)
+        .then((exchangeRate) => {
+          if (exchangeRate) {
+            const convertedAmount = parseFloat(fromAmount) * exchangeRate;  // Correct the conversion calculation
+            setToAmount(convertedAmount.toFixed(2)); // Adjust as needed for decimal places
+          } else {
+            setToAmount(''); // Handle null exchange rate
+          }
+        })
+        .catch((error) => {
+          console.error('Error converting amount:', error);
+          setToAmount(''); // Handle error
+        });
+    }
+  }, [fromCurrency, toCurrency, fromAmount]);
+  
+  
     return (
         <div className="app">
             <nav className="navbar">
@@ -65,9 +89,9 @@ function CurrencyConverter() {
                     <h2>Output in {currencyNames[`${toCurrency}`]}  </h2>
                 </div>
                 <div className="item3">
-                    <input type="number" autoComplete="off" value={fromAmount} className="input" onChange={e => setFromAmount(e.target.value)} />
+                    <input type="number" autoComplete="off"   value={fromAmount || ''} className="input" onChange={e => setFromAmount(e.target.value)} />
                     <h3>=</h3>
-                    <input className="output" disabled value={toAmount} type="text" />
+                    <input className="output" disabled value={toAmount || ''} type="text" />
                 </div>
                 <div className="item4">
                     <h2>{fromAmount} {fromCurrency} = {toAmount} {toCurrency}</h2>
