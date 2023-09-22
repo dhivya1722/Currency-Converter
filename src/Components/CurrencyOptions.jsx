@@ -1,38 +1,34 @@
+import React, { useState } from 'react';
+import Select from 'react-select';
+import '../Styles/CurrencyOptions.css';
 
-import React from 'react'
-import '../Styles/CurrencyOptions.css'
-
-// function CurrencyOptions({ prop, fromCurrency, toCurrency, currencyOptions, updateCurrency }) {
-//     const options = currencyOptions.map((data, index) => {
-//         return <option key={index} value={data}>
-//             {data}
-//         </option>
-//     })
+function CurrencyOptions({ prop, fromCurrency, toCurrency, updateCurrency, currencyOptions }) {
+    const [selectedOption, setSelectedOption] = useState(null);
 
 
-    function CurrencyOptions({ prop, fromCurrency, toCurrency, updateCurrency,currencyOptions }) {
-        const options = currencyOptions.map((currencyCode, index) => {
-            return (
-              <option key={index} value={currencyCode}>
-                {currencyCode}
-              </option>
-            );
-          });
+    const handleChange = (selectedOption) => {
+        if (selectedOption && selectedOption.value) {
+            setSelectedOption(selectedOption);
+            updateCurrency(selectedOption.value);
+        }
+    };
 
-          
+
+    const options = currencyOptions.map((currencyCode) => ({
+        value: currencyCode,
+        label: currencyCode,
+    }));
+
     return (
-        <>
-            {
-                prop === "From currency" ?
-                    <select name="currency" className={prop} value={fromCurrency} onChange={updateCurrency}>
-                        {options}
-                    </select> : prop === "To currency" ?
-                        <select name="currency" className={prop} value={toCurrency} onChange={updateCurrency}>
-                            {options}
-                        </select> : null
-            }
-        </>
-    )
+        <div className="currency-options">
+            <Select
+                value={selectedOption}
+                onChange={handleChange}
+                options={options}
+                placeholder={prop === 'From currency' ? 'Select from currency' : 'Select to currency'}
+            />
+        </div>
+    );
 }
 
-export default CurrencyOptions
+export default CurrencyOptions;
