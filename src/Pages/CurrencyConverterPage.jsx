@@ -41,9 +41,8 @@ function CurrencyConverter() {
       .catch((error) => console.error('Error fetching currencies:', error));
   }, []);
 
-
   useEffect(() => {
-    if (parseInt(fromAmount) === 0) {
+    if (parseFloat(fromAmount) === 0) {
       setToAmount(0);
     } else if (fromAmount === '') {
       setToAmount('');
@@ -51,17 +50,18 @@ function CurrencyConverter() {
       setToAmount(fromAmount);
     } else {
       fetchExchangeRate(fromCurrency, toCurrency)
-        .then((exchangeRate) => {
-          if (exchangeRate) {
-            const convertedAmount = parseFloat(fromAmount) * exchangeRate;  // Correct the conversion calculation
-            setToAmount(convertedAmount.toFixed(2)); // Adjust as needed for decimal places
+        .then((exchangeRates) => {
+          if (exchangeRates && !isNaN(parseFloat(fromAmount))) {
+            const { fromCurrencyRate, toCurrencyRate } = exchangeRates;
+            const convertedAmount = (parseFloat(fromAmount) / fromCurrencyRate) * toCurrencyRate;
+            setToAmount(convertedAmount.toFixed(3));
           } else {
-            setToAmount(''); // Handle null exchange rate
+            setToAmount('');
           }
         })
         .catch((error) => {
           console.error('Error converting amount:', error);
-          setToAmount(''); // Handle error
+          setToAmount('');
         });
     }
   }, [fromCurrency, toCurrency, fromAmount]);

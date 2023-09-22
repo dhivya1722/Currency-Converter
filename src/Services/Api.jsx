@@ -25,18 +25,20 @@ function fetchCurrencies() {
 //   const endpoint = `${EXCHANGE_RATE_ENDPOINT}&base=${fromCurrency}&symbols=${toCurrency}`;
 //   return fetch(endpoint);
 // }
-
 const fetchExchangeRate = (fromCurrency, toCurrency) => {
   const endpoint = `${EXCHANGE_RATE_ENDPOINT}`;
   return fetch(endpoint)
     .then((res) => res.json())
     .then((data) => {
       console.log('Received data:', data);
-      
-      if (data.rates && data.rates[toCurrency]) {
-        return data.rates[toCurrency]; // Use the correct exchange rate
+
+      const fromCurrencyRate = data.rates && data.rates[fromCurrency];
+      const toCurrencyRate = data.rates && data.rates[toCurrency];
+
+      if (fromCurrencyRate && toCurrencyRate) {
+        return { fromCurrencyRate, toCurrencyRate }; // Return both exchange rates
       } else {
-        console.error('Error fetching exchange rates. Rates data is null or undefined for the requested currency.');
+        console.error('Error fetching exchange rates. Rates data is null or undefined for the requested currencies.');
         return null;
       }
     })
@@ -45,6 +47,8 @@ const fetchExchangeRate = (fromCurrency, toCurrency) => {
       return null;
     });
 };
+
+
 
 
 // Rest of your code remains mostly the same, just update the API usage accordingly
