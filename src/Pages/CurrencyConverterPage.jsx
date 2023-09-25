@@ -125,7 +125,7 @@ function CurrencyConverter() {
             <CurrencyOptions prop="From currency" fromCurrency={fromCurrency} currencyOptions={currencyOptions} updateCurrency={updateFromCurrency} />                    </div>
           <div className="opt-2">
             <h2>To Currency  </h2>
-            <CurrencyOptions prop="To currency" fromCurrency={toCurrency} currencyOptions={currencyOptions} updateCurrency={updateToCurrency} />                      </div>
+            <CurrencyOptions prop="To currency" toCurrency={toCurrency} currencyOptions={currencyOptions} updateCurrency={updateToCurrency} />                      </div>
         </div>
         <div className="item2">
           <h2>Enter Amount in  {fromCurrency} </h2>

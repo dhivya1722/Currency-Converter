@@ -1,0 +1,65 @@
+/* Add your styles for the header and other common styles here */
+
+.main {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 400px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+ 
+  
+  .loginform {
+    margin-top: 20px;
+  }
+  
+  .loginform h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .loginform .user, .loginform .pass {
+    margin-bottom: 15px;
+  }
+  
+  .loginform .user label, .loginform .pass label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .loginform .user input, .loginform .pass input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .loginform .loginbutton {
+    margin-top: 20px;
+   
+  }
+  
+  .loginform .loginbutton button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #ec1090;
+    color:white;
+    border:none;
+  }
+  
+  .loginform p {
+    margin-top: 10px;
+  }
+  
+  .loginform p a {
+    color: #3498db;
+    text-decoration: none;
+  }
+  
+  .loginform p a:hover {
+    text-decoration: underline;
+  }
+  
