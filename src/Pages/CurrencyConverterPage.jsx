@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CurrencyOptions from '../Components/CurrencyOptions';
-import { fetchCurrencies, fetchExchangeRate } from '../Services/Api';
+import { fetchCurrencies, fetchExchangeRate,fetchHistoricalData,calculateConvertedAmount } from '../Services/Api';
 import '../Styles/CurrencyConverterPage.css';
 
 function CurrencyConverter() {
@@ -68,34 +68,24 @@ function CurrencyConverter() {
     }
   }, [fromCurrency, toCurrency, fromAmount]);
 
+  const getHistoricalExchangeRate = async () => {
+    if (selectedDate && fromCurrency && toCurrency) {
+      try {
+        const rates = await fetchHistoricalData(selectedDate);
+        const fromCurrencyRate = rates[fromCurrency];
+        const toCurrencyRate = rates[toCurrency];
+        const convertedAmount = calculateConvertedAmount(fromAmount, fromCurrencyRate, toCurrencyRate);
+        setToAmount(convertedAmount.toFixed(3));
+      } catch (error) {
+        setToAmount('Unavailable');
+      }
+    }
+  };
+  
+
   useEffect(() => {
     getHistoricalExchangeRate();
   }, [fromCurrency, toCurrency, selectedDate]);
-
-  const getHistoricalExchangeRate = () => {
-    if (selectedDate && fromCurrency && toCurrency) {
-      const historicalEndpoint = `http://data.fixer.io/api/${selectedDate}?access_key=80b1600a98127f7a295e319ee678e4a4`;
-
-      fetch(historicalEndpoint)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success) {
-            const fromCurrencyRate = data.rates[fromCurrency];
-            const toCurrencyRate = data.rates[toCurrency];
-
-            if (fromCurrencyRate && toCurrencyRate) {
-              const convertedAmount = (parseFloat(fromAmount) / fromCurrencyRate) * toCurrencyRate;
-              setToAmount(convertedAmount.toFixed(3));
-            } else {
-              setToAmount('Unavailable');
-            }
-          } else {
-            console.error('Error fetching historical exchange rates:', data.error);
-          }
-        })
-        .catch((error) => console.error('Error fetching historical exchange rates:', error));
-    }
-  };
 
   return (
     <div className="app">

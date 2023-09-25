@@ -35,7 +35,33 @@ const fetchExchangeRate = (fromCurrency, toCurrency) => {
 };
 
 
+// Separate API call into a function
+const fetchHistoricalData = async (selectedDate) => {
+  const historicalEndpoint = `http://data.fixer.io/api/${selectedDate}?access_key=80b1600a98127f7a295e319ee678e4a4`;
+
+  try {
+    const response = await fetch(historicalEndpoint);
+    const data = await response.json();
+
+    if (data.success) {
+      return data.rates;
+    } else {
+      throw new Error('Error fetching historical exchange rates:', data.error);
+    }
+  } catch (error) {
+    console.error('Error fetching historical exchange rates:', error);
+    throw error;
+  }
+};
 
 
-export { fetchCurrencies, fetchExchangeRate };
+const calculateConvertedAmount = (fromAmount, fromCurrencyRate, toCurrencyRate) => {
+  if (fromCurrencyRate && toCurrencyRate) {
+    return (parseFloat(fromAmount) / fromCurrencyRate) * toCurrencyRate;
+  } else {
+    return 'Unavailable';
+  }
+};
+
+export { fetchCurrencies, fetchExchangeRate,fetchHistoricalData,calculateConvertedAmount };
 
