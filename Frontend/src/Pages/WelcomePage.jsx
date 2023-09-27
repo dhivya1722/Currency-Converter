@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Styles/WelcomePage.css'
+import About from '../Components/About';
+
 
 const WelcomePage = () => {
   return (
@@ -20,7 +22,7 @@ const WelcomePage = () => {
           Start Free Currency Converter....
         </Link>
       </div>
-
+      <About />
     </>
   );
 };

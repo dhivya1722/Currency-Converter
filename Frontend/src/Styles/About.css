@@ -1,0 +1,22 @@
+/* About.css */
+
+.about-page {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .about-page h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .about-page p {
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+  
+  /* Add more styles as needed */
+  
