@@ -5,7 +5,7 @@ import '../Styles/CurrencyOptions.css';
 function CurrencyOptions({ prop, fromCurrency, toCurrency, updateCurrency, currencyOptions }) {
     const [selectedOption, setSelectedOption] = useState(null);
 
-
+//changing of dropdown values
     const handleChange = (selectedOption) => {
         if (selectedOption && selectedOption.value) {
             setSelectedOption(selectedOption);
@@ -13,7 +13,7 @@ function CurrencyOptions({ prop, fromCurrency, toCurrency, updateCurrency, curre
         }
     };
 
-
+//get the options (currencycode) in dropdown
     const options = currencyOptions.map((currencyCode) => ({
         value: currencyCode,
         label: currencyCode,

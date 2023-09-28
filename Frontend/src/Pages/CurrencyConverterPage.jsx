@@ -29,6 +29,8 @@ function CurrencyConverter() {
     setToCurrency(fromCurrency);
   };
 
+
+  //to retrieve all the currencies
   useEffect(() => {
     fetchCurrencies()
       .then((res) => res.json())
@@ -36,13 +38,13 @@ function CurrencyConverter() {
         const currencyKeys = Object.keys(data.symbols);
         setCurrencyOptions(currencyKeys);
         setFromCurrency(currencyKeys[0]);
-        setToCurrency(currencyKeys[0]); // Make sure we start with different currencies
+        setToCurrency(currencyKeys[0]); 
         setCurrencyNames(data.symbols);
       })
       .catch((error) => console.error('Error fetching currencies:', error));
   }, []);
 
- 
+ //calculate rates of each currency
   useEffect(() => {
     if (parseFloat(fromAmount) === 0) {
       setToAmount(0);
@@ -68,6 +70,8 @@ function CurrencyConverter() {
     }
   }, [fromCurrency, toCurrency, fromAmount]);
 
+
+  //get currency rates of selected date and conversion of  currency
   const getHistoricalExchangeRate = async () => {
     if (selectedDate && fromCurrency && toCurrency) {
       try {

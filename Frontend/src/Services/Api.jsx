@@ -5,12 +5,12 @@ const EXCHANGE_RATE_ENDPOINT = `http://data.fixer.io/api/latest?access_key=80b16
 // const historicalEndpoint = `http://data.fixer.io/api/${selectedDate}?access_key=80b1600a98127f7a295e319ee678e4a4`;
 
 
-
+//API call for fetching currency code
 function fetchCurrencies() {
   return fetch(CURRENCY_LIST_ENDPOINT);
 }
 
-
+//API call for fetching the currencycode with their rates
 const fetchExchangeRate = (fromCurrency, toCurrency) => {
   const endpoint = `${EXCHANGE_RATE_ENDPOINT}`;
   return fetch(endpoint)
@@ -35,7 +35,7 @@ const fetchExchangeRate = (fromCurrency, toCurrency) => {
 };
 
 
-// Separate API call into a function
+// Separate API call into a function of selected date
 const fetchHistoricalData = async (selectedDate) => {
   const historicalEndpoint = `http://data.fixer.io/api/${selectedDate}?access_key=80b1600a98127f7a295e319ee678e4a4`;
 
